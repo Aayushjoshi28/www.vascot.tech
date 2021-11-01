@@ -22,6 +22,10 @@
             <link rel="stylesheet" href="assets/css/slick.css">
             <link rel="stylesheet" href="assets/css/nice-select.css">
             <link rel="stylesheet" href="assets/css/style.css">
+
+
+            <!-- Chabot CSS-->
+            <link rel="stylesheet" href="assets/css/Chatbot/chatbot.css">
    </head>
 
    <body>
@@ -147,6 +151,29 @@
             }
         </script>
         <!-- slider Area End-->
+
+        <!--Chatbot Start-->
+        <button class="open-button" onclick="openForm()"></button>
+
+        <div class="chat-popup" id="myForm">
+            <form action="/action_page.php" class="form-container">
+                <label for="msg"><b>Message</b></label>
+                <iframe src='https://webchat.botframework.com/embed/sarvakaraum-bot/gemini?b=sarvakaraum-bot&s=vjFpGcCQ2W4.EqW2ikA84w5xoCHZ85I2YSyTwwYF5h0KBEDySU09i2g&username=You'  style='min-width: 250px; width: 100%; min-height: 500px;'></iframe>
+                <button type="button" class="btn cancel" onclick="closeForm()">Minimize</button>
+            </form>
+        </div>
+
+        <script>
+            function openForm() {
+                document.getElementById("myForm").style.display = "block";
+            }
+
+            function closeForm() {
+                document.getElementById("myForm").style.display = "none";
+            }
+        </script>
+        <!--Chatbot End-->
+
         <!-- Our Services Start -->
         <div class="our-services section-pad-t30">
             <div class="container">
