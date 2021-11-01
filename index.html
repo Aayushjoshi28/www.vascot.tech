@@ -6,7 +6,7 @@
          <title>VASCOT </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="manifest" href="site.webmanifest">
+
 		<link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
 
 		<!-- CSS here -->
@@ -27,6 +27,12 @@
             <!-- Chabot CSS-->
             <link rel="stylesheet" href="assets/css/Chatbot/chatbot.css">
    </head>
+    <script>
+        function Checkvun() {
+            var userdata = document.getElementById('userdata').value;
+            document.getElementById("demo").innerHTML = userdata;
+        }
+    </script>
 
    <body>
     <!-- Preloader Start -->
@@ -103,7 +109,7 @@
                                 <!-- form -->
                                 <form action="#" class="search-box">
                                     <div class="input-form">
-                                        <input type="text" placeholder="Website Link Or IP Address">
+                                        <input type="text" id="userdata" placeholder="Website Link Or IP Address">
                                     </div>
                                     <div class="select-form">
                                         <div class="select-itms">
@@ -114,17 +120,17 @@
                                         </div>
                                     </div>
                                     <div class="search-form">
-                                        <a href="#" >Go</a>
+                                        <a onclick="Checkvun()">Go</a>
                                     </div>	
                                 </form>
 
                                 <br>
                                 <div>
-                                    <input type="checkbox" id="sqlsts" name="sqlsts" value="0" onclick="changesql(this)">
-                                    <label for="sqlsts" style= 'color:white' >SQL Injection</label>
+                                    <h3><input type="checkbox" id="sqlsts" name="sqlsts" value="0" onclick="changesql(this)">
+                                    <label for="sqlsts" style= 'color:white' >SQL Injection</label></h3>
                                     <span></span>
-                                    <input type="checkbox" id="xsssts" name="xsssts" value="0" onclick="changexss(this)">
-                                    <label for="xsssts" style= 'color:white' >Cross Site Scripting</label>
+                                    <h3><input type="checkbox" id="xsssts" name="xsssts" value="0" onclick="changexss(this)">
+                                    <label for="xsssts" style= 'color:white' size="100">Cross Site Scripting</label></h3>
                                 </div>
                             </div>
                         </div>
@@ -179,6 +185,7 @@
                 <!-- Section Tittle -->
                 <div class="row">
                     <div class="col-lg-12">
+                        <p id="demo"></p>
                         <div class="section-tittle text-center">
                             <span>FEATURED VULNERABILITIES</span>
                             <h2> Top Web Application Vulnerabilities </h2>
