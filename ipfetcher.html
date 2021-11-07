@@ -8,17 +8,17 @@
       color: green;
     }
   </style>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script>
     $.getJSON("https://api.ipify.org?format=json",
             function(data) {
-              $("#gfg").html(data.ip);
+              $("#IP").html(data.ip);
             })
   </script>
 </head>
 
 <body>
-  <h1 id="gfg"></h1>
+<a id="IP" style="display: none"></a>
 </body>
 
 </html>
