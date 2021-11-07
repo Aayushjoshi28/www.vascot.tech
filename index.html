@@ -64,8 +64,8 @@
                                 </div>          
                                 <!-- Header-btn -->
                                 <div class="header-btn d-none f-right d-lg-block">
-                                    <a href="#" class="btn head-btn1">Register</a>
-                                    <a href="#" class="btn head-btn2">Login</a>
+                                    <a href="register.html" class="btn head-btn1">Register</a>
+                                    <a href="sign-in.html" class="btn head-btn2">Login</a>
                                 </div>
                             </div>
                         </div>
@@ -112,10 +112,8 @@
                                         </div>
                                     </div>
                                     <div class="search-form">
-                                        <div class="search-form">
-                                            <a onclick="Checkvun()">Go</a>
-                                        </div>
-                                    </div>	
+                                            <a class="genric-btn primary-border e-large" onclick="Checkvun()">Go</a>
+                                    </div>
                                 </form>
 
                                 <br>
@@ -132,6 +130,8 @@
                 </div>
             </div>
         </div>
+
+
         <script>
             function Checkvun() {
                 var userdata = document.getElementById('userdata').value;
@@ -142,8 +142,10 @@
             function changesql(checkboxElem) {
                 if (checkboxElem.checked) {
                     document.getElementById("sqlsts").value = "1";
+                    return ssts = 1;
                 } else {
                     document.getElementById("sqlsts").value = "0";
+                    return ssts = 0;
                 }
             }
         </script>
@@ -151,8 +153,10 @@
             function changexss(checkboxElem) {
                 if (checkboxElem.checked) {
                     document.getElementById("xsssts").value = "1";
+                    return xsts = 1;
                 } else {
                     document.getElementById("xsssts").value = "0";
+                    return xsts = 0;
                 }
             }
         </script>
