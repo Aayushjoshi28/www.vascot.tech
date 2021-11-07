@@ -1,6 +1,6 @@
 /* Button used to open the chat form - fixed at the bottom of the page */
 .open-button {
-    background-image: url("https://i.ibb.co/jbP8R3N/VASCOT-Logo-Transparent-1.png");
+    background: transparent url("https://i.ibb.co/jbP8R3N/VASCOT-Logo-Transparent-1.png");
     padding: 16px 20px;
     border: none;
     cursor: pointer;
@@ -8,8 +8,8 @@
     position: fixed;
     bottom: 23px;
     right: 28px;
-    height: 74px;
-    width: 69px;
+    height: 70px;
+    width: 70px;
 }
 
 /* The popup chat - hidden by default */
