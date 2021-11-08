@@ -12,13 +12,12 @@
   <script>
     $.getJSON("https://api.ipify.org?format=json",
             function(data) {
-              $("#IP").html(data.ip);
+              ipadd = $("#IP").html(data.ip);
             })
   </script>
 </head>
 
 <body>
-<a id="IP" style="display: none"></a>
+<p id="IP" STYLE="display: none"></p>
 </body>
-
 </html>
