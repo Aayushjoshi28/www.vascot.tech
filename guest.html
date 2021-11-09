@@ -69,6 +69,7 @@
 
             var user_ip = document.getElementById("IP").innerHTML;
             document.getElementById("datacheck").innerHTML = user_ip;
+            ip = toString(user_ip);
         }
     </script>
     <script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script>
@@ -94,7 +95,7 @@
             var params = {
                 TableName: table,
                 Key:{
-                    "ip_add": user_ip
+                    "ip_add": ip
                 }
             };
             docClient.get(params, function(err, data) {
@@ -126,8 +127,7 @@
                     "Name": "GuestUser",
                     "Sqlsts": op1,
                     "Xsssts": op2,
-                    "Op3": op3,
-                    "Op4": op4
+                    "Portsts": op3
                 })
             })
         }
@@ -142,8 +142,8 @@
 
     <script>
         function go_fn() {
-            save_data();
-            save_ip();
+            save_data(),
+            save_ip(),
             readItem();
         }
     </script>
