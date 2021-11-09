@@ -35,6 +35,27 @@
         }
       });
     }
+    function createItem() {
+      var params = {
+        TableName : table,
+        Item:{
+          "ip_add": 2015,
+          "url": "The Big New Movie",
+          "url": "The Big New Movie",
+          "url": "The Big New Movie",
+          "url": "The Big New Movie",
+        }
+      };
+      docClient.put(params, function(err, data) {
+        if (err) {
+          document.getElementById('textarea').innerHTML = "Unable to add item: " + "\n" + JSON.stringify(err, undefined, 2);
+        } else {
+          document.getElementById('textarea').innerHTML = "PutItem succeeded: " + "\n" + JSON.stringify(data, undefined, 2);
+        }
+      });
+    }
+
+  </script>
 
   </script>
 </head>
