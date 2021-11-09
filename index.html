@@ -23,6 +23,130 @@
             <link rel="stylesheet" href="assets/css/style.css">
             <!-- Chatbot CSS-->
             <link rel="stylesheet" href="assets/css/Chatbot/chatbot.css">
+            <script type="text/javascript">
+                function changesql(checkboxElem) {
+                    if (checkboxElem.checked) {
+                        document.getElementById("sqlsts").value = "1";
+                        return op1 = 1;
+                    } else {
+                        document.getElementById("sqlsts").value = "0";
+                        return op1 = 0;
+                    }
+                }
+            </script>
+            <script type="text/javascript">
+                function changexss(checkboxElem) {
+                    if (checkboxElem.checked) {
+                        document.getElementById("xsssts").value = "1";
+                        return op2 = 1;
+                    } else {
+                        document.getElementById("xsssts").value = "0";
+                        return op2 = 0;
+                    }
+                }
+            </script>
+        <script type="text/javascript">
+            function changeport(checkboxElem) {
+                if (checkboxElem.checked) {
+                    document.getElementById("portscn").value = "1";
+                    return op3 = 1;
+                } else {
+                    document.getElementById("portscn").value = "0";
+                    return op3 = 0;
+                }
+            }
+        </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+            <script>
+                $.getJSON("https://api.ipify.org?format=json",
+                    function(data) {
+                        ipadd = $("#IP").html(data.ip);
+                    })
+            </script>
+            <script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script>
+            <script>
+
+            AWS.config.update({
+                region: "us-west-2",
+                endpoint: 'https://dynamodb.us-east-1.amazonaws.com',
+                // accessKeyId default can be used while using the downloadable version of DynamoDB.
+                // For security reasons, do not store AWS Credentials in your files. Use Amazon Cognito instead.
+                accessKeyId: "ASIASL2ZNOLNRZMMCFIG",
+                // secretAccessKey default can be used while using the downloadable version of DynamoDB.
+                // For security reasons, do not store AWS Credentials in your files. Use Amazon Cognito instead.
+                secretAccessKey: "KY1xmULurUHEyN6YkGAHcxyfy9gr5I5+YSKdnA1C",
+                SessionToken: "FwoGZXIvYXdzECgaDKXoC5e3N7JUAQb+5SK+Aeh/vxKdxG2xK6X/fwF/7Hc0X5IbfOgfS1WhJCpW8v0sBbnzRgkTegbBfbz6qo3XDdXX0GZbuQ44xoCJpNTevPuzu4TWDXgVeZe4ooN2oZBMTY0V9NYr+hOdQYgtU6pLxIjZTBDuBPyuSiiVZxEIPb5WUVrASY1b+5P/zJc2GtnGUi0P+mh0VbBoYniSr3URtvs+sXERIgXRvSHLZqRxpi3xcOiMVScH5kMcRdHGhKu0iXO6f1KVs+kNbU46MUIo7uSkjAYyLeAGsfbzX1GGVsB1CpEZyWEeqXvjtDJ0GKEbg/XqElzYwb6n1Wxne/rCXcC+Dg=="
+            });
+
+            var docClient = new AWS.DynamoDB.DocumentClient();
+
+            function readItem() {
+                var table = "vascot_guest_db";
+                var user_ip = "192.168.31.48";
+
+                var params = {
+                    TableName: table,
+                    Key:{
+                        "ip_add": user_ip
+                    }
+                };
+                docClient.get(params, function(err, data) {
+                    if (err) {
+                        document.getElementById('datacheck').innerHTML = "Unable to read item: " + "\n" + JSON.stringify(err, undefined, 2);
+
+                    }
+                    else {
+                        document.getElementById('datacheck').innerHTML = "GetItem succeeded: " + "\n" + JSON.stringify(data, undefined, 2);
+                        alert("No credit left for you");
+                    }
+                });
+            }
+            </script>
+            <script src="https://ajax.google.com/ajax/libs/jquery/3.1.0/jquery.min.js">
+            </script>
+            <script type="text/javascript">
+                op3=0;
+                op4=0;
+                var API_URL ='https://88k76rn337.execute-api.us-east-1.amazonaws.com/undefined/'
+                function send_api() {
+                    userdata = document.getElementById('userdata').value;
+                    document.getElementById("demo").innerHTML = userdata;
+                    $.ajax({
+                        type: 'POST',
+                        url: API_URL,
+                        data: JSON.stringify({
+                            "Url": userdata,
+                            "Name": "GuestUser",
+                            "Sqlsts": op1,
+                            "Xsssts": op2,
+                            "Op3": op3,
+                            "Op4": op4
+                        })
+                    })
+                }
+            </script>
+            <script>
+                function save_data() {
+                    var userdata = document.getElementById('userdata').value;
+                    document.getElementById("demo").innerHTML = userdata;
+
+                }
+            </script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+            <script>
+                function save_ip() {
+
+                    user_ip = document.getElementById("IP").innerHTML;
+                    document.getElementById("datacheck").innerHTML = user_ip;
+                }
+            </script>
+            <script>
+                function go_fn() {
+                    save_data();
+                    save_ip();
+                    //readItem();
+                }
+            </script>
    </head>
 
    <body>
@@ -54,6 +178,7 @@
                                 <div class="header-btn d-none f-right d-lg-block">
                                     <a href="register.html" class="btn head-btn1">Register</a>
                                     <a href="sign-in.html" class="btn head-btn2">Login</a>
+                                    <a href="sign-in.html" class="btn head-btn1">Guest</a>
                                 </div>
                             </div>
                         </div>
@@ -78,7 +203,9 @@
                         <div class="row">
                             <div class="col-xl-6 col-lg-9 col-md-10">
                                 <div class="hero__caption">
+                                    <textarea id="IP" name="ip_textarea" rows="4" cols="50" style= "Display:none" ></textarea>
                                     <p id="demo"></p>
+                                    <p id="datacheck"></p>
                                     <h1 style= 'color:white' >Vulnerability Testing Using Severless Computing</h1>
                                 </div>
                             </div>
@@ -89,7 +216,7 @@
                                 <!-- form -->
                                 <form action="#" class="search-box">
                                     <div class="input-form">
-                                        <input type="text" placeholder="Website Link Or IP Address">
+                                        <input type="text" id="userdata" placeholder="Website Link Or IP Address">
                                     </div>
                                     <div class="select-form">
                                         <div class="select-itms">
@@ -100,7 +227,7 @@
                                         </div>
                                     </div>
                                     <div class="search-form">
-                                            <a class="genric-btn primary-border e-large" onclick="Checkvun()">Go</a>
+                                            <a type="button" class="genric-btn primary-border e-large" onclick="go_fn()">Go</a>
                                     </div>
                                 </form>
 
@@ -111,6 +238,8 @@
                                     <span></span>
                                     <h4><input type="checkbox" id="xsssts" name="xsssts" value="0" onclick="changexss(this)">
                                     <label for="xsssts" style= 'color:white' >Cross Site Scripting</label></h4>
+                                    <h4><input type="checkbox" id="portscn" name="portscn" value="0" onclick="changeport(this)">
+                                    <label for="portscn" style= 'color:white' >Port Scanning</label></h4>
                                 </div>
                             </div>
                         </div>
@@ -120,34 +249,8 @@
         </div>
 
 
-        <script>
-            function Checkvun() {
-                var userdata = document.getElementById('userdata').value;
-                document.getElementById("demo").innerHTML = userdata;
-            }
-        </script>
-        <script type="text/javascript">
-            function changesql(checkboxElem) {
-                if (checkboxElem.checked) {
-                    document.getElementById("sqlsts").value = "1";
-                    return ssts = 1;
-                } else {
-                    document.getElementById("sqlsts").value = "0";
-                    return ssts = 0;
-                }
-            }
-        </script>
-        <script type="text/javascript">
-            function changexss(checkboxElem) {
-                if (checkboxElem.checked) {
-                    document.getElementById("xsssts").value = "1";
-                    return xsts = 1;
-                } else {
-                    document.getElementById("xsssts").value = "0";
-                    return xsts = 0;
-                }
-            }
-        </script>
+
+
         <!-- slider Area End-->
 
         <!--Chatbot Start-->

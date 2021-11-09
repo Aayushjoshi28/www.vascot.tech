@@ -15,9 +15,19 @@
               ipadd = $("#IP").html(data.ip);
             })
   </script>
+  <script>
+    function save_data() {
+
+      user_ip = document.getElementById("IP").innerHTML;
+      document.getElementById("datacheck").innerHTML = user_ip;
+    }
+  </script>
 </head>
 
 <body>
-<p id="IP" STYLE="display: none"></p>
+<textarea id="IP" name="w3review" rows="4" cols="50" ></textarea>
+
+<p id="datacheck"></p>
+<button onclick="save_data()">Click</button>
 </body>
 </html>
