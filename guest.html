@@ -80,11 +80,11 @@
             endpoint: 'https://dynamodb.us-east-1.amazonaws.com',
             // accessKeyId default can be used while using the downloadable version of DynamoDB.
             // For security reasons, do not store AWS Credentials in your files. Use Amazon Cognito instead.
-            accessKeyId: "ASIASL2ZNOLN5SCWMCM4",
+            accessKeyId: "ASIASL2ZNOLNZWGZ7ZE4",
             // secretAccessKey default can be used while using the downloadable version of DynamoDB.
             // For security reasons, do not store AWS Credentials in your files. Use Amazon Cognito instead.
-            secretAccessKey: "/J0RB7Uyz/BZENg4KPEGj/E80dFs8NH+70NZGi4q",
-            sessionToken: "FwoGZXIvYXdzEDkaDGd9P0m/ZeQ+03T7fyK+Ac/74aoGXGaMNYJ4YeDUjmh/HU7lM4INW7DgWoOKPZzlRBJPKB9pf12II6K3HWdSY4ERkOiROfMVa9dwuZyoVgMuCx21KeYcNvvNyc4bvlb6RLOcSK6dEFxXHwWKfHe6XTm0ii2QUjeS2mXRIguCqa6/LkA28fB9SkShbIIyJyb/x7jL1AgQ37hNQbMF+Pt9ale65nhqtBpgB3xbY/wo0OVuwNYDDPUR0JfWELoIe0OomUKQNEGIdzv2d2GISpMonMuojAYyLYOnL3hIQvGn8Lkpiwb+SDIOgNoevSOmcPTshEmq6Hf2KkCnIV+21sxcQtBbSQ=="
+            secretAccessKey: "DEl7N3XLn1jBpIESUgdkHBkKdifqBPdp4awPcn/S",
+            sessionToken: "FwoGZXIvYXdzEEIaDPOrgmJ+yaVJ6lHrISK+AYWKc4vsj+TREmBXit/jJ1bZiKidD+E09/TdRsg+m3uKGl+W1SmXHtvX6GmAwsnfwpESX07o3eIFJaQzoOPAwlHYXQlVz5QW8QPXyirCDwftIES5v657Lsvvz73684fYCn+Lo6g10ZzCnoMzv5kiJKzXiHly6eijGyiwlSIT3s5jwmi5BVQQzk/FWbrJ4bHjMCCk24pp7uKXIkAEbAgmTGuvQ9/wLqOpfMgSS9g9UjL2Y2r29jM1RrmXTUYoKTgomsqqjAYyLVNcf0wBJ48dPfL6xl2epUc8Hot7FxWZldsl55CZZ9vw1whRIyGgN/9MKgCCnw=="
         });
 
         var docClient = new AWS.DynamoDB.DocumentClient();
@@ -113,30 +113,29 @@
     <script src="https://ajax.google.com/ajax/libs/jquery/3.1.0/jquery.min.js">
     </script>
     <script type="text/javascript">
-        op3=0;
-        op4=0;
-        var API_URL ='https://88k76rn337.execute-api.us-east-1.amazonaws.com/undefined/'
+        var API_URL ='https://r27tts8ehl.execute-api.us-east-1.amazonaws.com/default/final-testing'
         function send_api() {
-            userdata = document.getElementById('userdata').value;
-            document.getElementById("demo").innerHTML = userdata;
             $.ajax({
                 type: 'POST',
                 url: API_URL,
                 data: JSON.stringify({
-                    "Url": userdata,
-                    "Name": "GuestUser",
-                    "Sqlsts": op1,
-                    "Xsssts": op2,
-                    "Portsts": op3
+                    "user_ip": user_ip,
+                    "userdata": userdata,
+                    "name": "GuestUser",
+                    "op1": op1,
+                    "op2": op2,
+                    "op3": op3
                 })
             })
         }
     </script>
     <script>
         function save_data() {
-            var userdata = document.getElementById('userdata').value;
+            userdata = document.getElementById('userdata').value;
             document.getElementById("demo").innerHTML = userdata;
-
+            //document.getElementById("demo1").innerHTML = op1;
+            //document.getElementById("demo2").innerHTML = op2;
+            //document.getElementById("demo3").innerHTML = op3;
         }
     </script>
 
@@ -145,6 +144,8 @@
             save_data(),
             save_ip(),
             readItem();
+            send_api();
+            //pdf_fn();
         }
     </script>
 </head>
@@ -205,6 +206,9 @@
                             <div class="hero__caption">
                                 <textarea id="IP" name="ip_textarea" rows="4" cols="50" style= "Display:none" ></textarea>
                                 <p id="demo"></p>
+                                <p id="demo1"></p>
+                                <p id="demo2"></p>
+                                <p id="demo3"></p>
                                 <p id="datacheck"></p>
                                 <h1 style= 'color:white' >Vulnerability Testing Using Severless Computing</h1>
                             </div>
