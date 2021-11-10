@@ -58,8 +58,10 @@ function score() {
         outof = 10;
     }
     sum = sqlivalue + xssvalue + portvalue;
-    scorevalue = (sum * 10) / outof
-    document.getElementById('score').textContent = scorevalue;
+    scorevalue = 0;
+    scorevalue = ((sum * 10) / outof);
+    scoretype = toString(scorevalue);
+    document.getElementById('score1').textContent = scoretype;
 }
 
 
