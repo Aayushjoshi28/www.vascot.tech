@@ -28,10 +28,12 @@
         function changesql(checkboxElem) {
             if (checkboxElem.checked) {
                 document.getElementById("sqlsts").value = "1";
-                return op1 = 1;
+                op1 = 1;
+                return op1;
             } else {
                 document.getElementById("sqlsts").value = "0";
-                return op1 = 0;
+                op1 = 0;
+                return op1;
             }
         }
     </script>
@@ -39,10 +41,12 @@
         function changexss(checkboxElem) {
             if (checkboxElem.checked) {
                 document.getElementById("xsssts").value = "1";
-                return op2 = 1;
+                op2 = 1;
+                return op2;
             } else {
                 document.getElementById("xsssts").value = "0";
-                return op2 = 0;
+                op2 = 0;
+                return op2;
             }
         }
     </script>
@@ -51,10 +55,11 @@
             if (checkboxElem.checked) {
                 document.getElementById("portscn").value = "1";
                 op3 = 1;
-                return;
+                return op3;
             } else {
                 document.getElementById("portscn").value = "0";
-                return op3 = 0;
+                op3 = 0;
+                return op3;
             }
         }
     </script>
@@ -143,11 +148,14 @@
     </script>
 
     <script>
-        function go_fn() {
+        function go_fn(){
+            alert("Report will be generated in few minutes"),
             save_data(),
             save_ip(),
-            readItem();
+
+            readItem(),
             send_api();
+
             //pdf_fn();
         }
     </script>
@@ -203,11 +211,11 @@
                         <div class="col-xl-6 col-lg-9 col-md-10">
                             <div class="hero__caption">
                                 <textarea id="IP" name="ip_textarea" rows="4" cols="50" style= "Display:none" ></textarea>
-                                <p id="demo"></p>
-                                <p id="demo1"></p>
-                                <p id="demo2"></p>
-                                <p id="demo3"></p>
-                                <p id="datacheck"></p>
+                                <p id="demo" style="display:none;"></p>
+                                <p id="demo1" style="display:none;"></p>
+                                <p id="demo2" style="display:none;"></p>
+                                <p id="demo3" style="display:none;"></p>
+                                <p id="datacheck" style="display:none;" ></p>
                                 <h1 style= 'color:white' >Vulnerability Testing Using Severless Computing</h1>
                             </div>
                         </div>
@@ -277,12 +285,13 @@
     <!--Chatbot End-->
     <!-- Our Services Start -->
     <script type="text/javascript">
-        $(document).ready(function() {
 
-            $('#reloader').click(function(){
-                alert('Generate the results of the vulnerability test');
-            });
-        });
+        //$(document).ready(function() {
+
+            //$('#reloader').click(function(){
+              //  alert('Generate the results of the vulnerability test');
+            //});
+        //});
     </script>
     <div class="our-services section-padd-top30">
         <div class="container">
