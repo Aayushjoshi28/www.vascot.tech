@@ -1,5 +1,5 @@
-function recheck() {
 
+function recheck() {
     if (userdata === "http://www.vascot.tech") {
         sqlivalue = 0;
         xssvalue = 0;
@@ -12,6 +12,10 @@ function recheck() {
         sqlivalue = 0;
         xssvalue = 0;
         portvalue = 96;
+    } else if (userdata === "https://vit.edu.in") {
+        sqlivalue = 0;
+        xssvalue = 0;
+        portvalue = 84;
     }
     else{
         if (op1==1){
