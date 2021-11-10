@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="assets/css/slick.css">
     <link rel="stylesheet" href="assets/css/nice-select.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/z.js"></script>
     <!-- Chatbot CSS-->
     <link rel="stylesheet" href="assets/css/Chatbot/chatbot.css">
     <script type="text/javascript">
@@ -279,7 +280,7 @@
         $(document).ready(function() {
 
             $('#reloader').click(function(){
-                alert('Reload the results of the vulnerability test');
+                alert('Generate the results of the vulnerability test');
             });
         });
     </script>
@@ -290,7 +291,7 @@
                 <div class="col-lg-12">
                     <div class="section-tittle text-center">
                         <h2>Generated Report</h2>
-                        <button class="btn head-btn3" id="reloader" style="float: right; margin-right: 5px ; margin-bottom: 30px;  background-color: green" >Reload</button>
+                        <button class="btn head-btn3" id="reloader" style="float: right; margin-right: 5px ; margin-bottom: 30px;  background-color: green" onclick="values()">Reload</button>
                     </div>
                 </div>
             </div>
@@ -303,7 +304,7 @@
                         <div class="services-cap">
                             <br>
                             <h1 style="float: left; padding-left: 20px">SQL Injection Vulnerability</h1>
-                            <h1 style="float: right; padding-left: 20px; margin-right: 30px">100</h1>
+                            <h1 style="float: right; padding-left: 20px; margin-right: 30px" id="sqli"></h1>
                             <br><br><br>
                         </div>
                     </div>
@@ -316,7 +317,7 @@
                         <div class="services-cap">
                             <br>
                             <h1 style="float: left; padding-left: 20px">Cross Site Scripting Vulnerability</h1>
-                            <h1 style="float: right; padding-left: 20px; margin-right: 30px">50</h1>
+                            <h1 style="float: right; padding-left: 20px; margin-right: 30px" id="xss"></h1>
                             <br><br><br>
                         </div>
                     </div>
@@ -329,7 +330,7 @@
                         <div class="services-cap">
                             <br>
                             <h1 style="float: left; padding-left: 20px">Port Scan Vulnerability</h1>
-                            <h1 style="float: right; padding-left: 20px; margin-right: 30px">84</h1>
+                            <h1 style="float: right; padding-left: 20px; margin-right: 30px" id="pscan"></h1>
                             <br><br><br>
                         </div>
                     </div>
@@ -342,7 +343,7 @@
                         <div class="services-cap">
                             <br>
                             <h1 style="float: left; padding-left: 20px">Final Score</h1>
-                            <h1 style="float: right; padding-left: 20px; margin-right: 30px">150</h1>
+                            <h1 style="float: right; padding-left: 20px; margin-right: 30px" id="score" onclick="score()"></h1>
                             <br><br><br>
                         </div>
                     </div>
