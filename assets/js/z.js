@@ -8,7 +8,7 @@ function recheck() {
         sqlivalue = 50;
         xssvalue = 50;
         portvalue = 0;
-    } else if (userdata === "https://www.thepythoncode.com/") {
+    } else if (userdata === "https://www.thepythoncode.com") {
         sqlivalue = 0;
         xssvalue = 0;
         portvalue = 96;
