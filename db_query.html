@@ -1,0 +1,65 @@
+<!--
+  Copyright 2010-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+
+  This file is licensed under the Apache License, Version 2.0 (the "License").
+  You may not use this file except in compliance with the License. A copy of
+  the License is located at
+
+  http://aws.amazon.com/apache2.0/
+
+  This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+  CONDITIONS OF ANY KIND, either express or implied. See the License for the
+  specific language governing permissions and limitations under the License.
+-->
+<html>
+<head>
+  <script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script>
+
+  <script>
+    AWS.config.update({
+      region: "us-east-1",
+      endpoint: 'https://dynamodb.us-east-1.amazonaws.com',
+      // accessKeyId default can be used while using the downloadable version of DynamoDB.
+      // For security reasons, do not store AWS Credentials in your files. Use Amazon Cognito instead.
+      accessKeyId: "ASIASL2ZNOLN5SCWMCM4",
+      // secretAccessKey default can be used while using the downloadable version of DynamoDB.
+      // For security reasons, do not store AWS Credentials in your files. Use Amazon Cognito instead.
+      secretAccessKey: "/J0RB7Uyz/BZENg4KPEGj/E80dFs8NH+70NZGi4q",
+      sessionToken: "FwoGZXIvYXdzEDkaDGd9P0m/ZeQ+03T7fyK+Ac/74aoGXGaMNYJ4YeDUjmh/HU7lM4INW7DgWoOKPZzlRBJPKB9pf12II6K3HWdSY4ERkOiROfMVa9dwuZyoVgMuCx21KeYcNvvNyc4bvlb6RLOcSK6dEFxXHwWKfHe6XTm0ii2QUjeS2mXRIguCqa6/LkA28fB9SkShbIIyJyb/x7jL1AgQ37hNQbMF+Pt9ale65nhqtBpgB3xbY/wo0OVuwNYDDPUR0JfWELoIe0OomUKQNEGIdzv2d2GISpMonMuojAYyLYOnL3hIQvGn8Lkpiwb+SDIOgNoevSOmcPTshEmq6Hf2KkCnIV+21sxcQtBbSQ=="
+    });
+
+    var docClient = new AWS.DynamoDB.DocumentClient();
+
+    function queryData() {
+      document.getElementById('textarea').innerHTML += "Querying for movies from 1985.";
+
+      var params = {
+        TableName : "vascot_guest_db",
+        KeyConditionExpression: "#ip = :uip",
+        ExpressionAttributeNames:{
+          "#ip": "ip_add"
+        },
+        ExpressionAttributeValues: {
+          ":uip": ip
+        }
+      };
+
+      docClient.query(params, function(err, data) {
+        if (err) {
+          document.getElementById('textarea').innerHTML += "Unable to query. Error: " + "\n" + JSON.stringify(err, undefined, 2);
+        } else {
+          document.getElementById('textarea').innerHTML += "Querying for movies from 1985: " + "\n" + JSON.stringify(data, undefined, 2);
+        }
+      });
+    }
+
+  </script>
+</head>
+
+<body>
+<input id="queryData" type="button" value="Query" onclick="queryData();" />
+<br><br>
+<textarea readonly id= "textarea" style="width:400px; height:800px" Style="Display:none"></textarea>
+
+</body>
+</html>
