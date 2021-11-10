@@ -18,7 +18,7 @@
   <script>
     AWS.config.update({
       region: "us-east-1",
-      endpoint: 'https://dynamodb.us-east-1.amazonaws.com',
+      endpoint: 'http://dynamodb.us-east-1.amazonaws.com',
       // accessKeyId default can be used while using the downloadable version of DynamoDB.
       // For security reasons, do not store AWS Credentials in your files. Use Amazon Cognito instead.
       accessKeyId: "ASIASL2ZNOLNRSAJ23XD",
@@ -35,8 +35,8 @@
       var params = {
         TableName :"vascot_guest_db",
         Item:{
-          "ip_add": ip,
-          'url': userdata,
+          "ip_add": toString(ip),
+          'url': toString(userdata),
           'name': "GuestUser",
           'op1': op1,
           'op2': op2,
