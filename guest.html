@@ -49,7 +49,8 @@
         function changeport(checkboxElem) {
             if (checkboxElem.checked) {
                 document.getElementById("portscn").value = "1";
-                return op3 = 1;
+                op3 = 1;
+                return;
             } else {
                 document.getElementById("portscn").value = "0";
                 return op3 = 0;
@@ -67,7 +68,7 @@
     <script>
         function save_ip() {
 
-            var user_ip = document.getElementById("IP").innerHTML;
+            user_ip = document.getElementById("IP").innerHTML;
             document.getElementById("datacheck").innerHTML = user_ip;
             ip = toString(user_ip);
         }
@@ -80,11 +81,11 @@
             endpoint: 'https://dynamodb.us-east-1.amazonaws.com',
             // accessKeyId default can be used while using the downloadable version of DynamoDB.
             // For security reasons, do not store AWS Credentials in your files. Use Amazon Cognito instead.
-            accessKeyId: "ASIASL2ZNOLNZWGZ7ZE4",
+            accessKeyId: "ASIASL2ZNOLNRSAJ23XD",
             // secretAccessKey default can be used while using the downloadable version of DynamoDB.
             // For security reasons, do not store AWS Credentials in your files. Use Amazon Cognito instead.
-            secretAccessKey: "DEl7N3XLn1jBpIESUgdkHBkKdifqBPdp4awPcn/S",
-            sessionToken: "FwoGZXIvYXdzEEIaDPOrgmJ+yaVJ6lHrISK+AYWKc4vsj+TREmBXit/jJ1bZiKidD+E09/TdRsg+m3uKGl+W1SmXHtvX6GmAwsnfwpESX07o3eIFJaQzoOPAwlHYXQlVz5QW8QPXyirCDwftIES5v657Lsvvz73684fYCn+Lo6g10ZzCnoMzv5kiJKzXiHly6eijGyiwlSIT3s5jwmi5BVQQzk/FWbrJ4bHjMCCk24pp7uKXIkAEbAgmTGuvQ9/wLqOpfMgSS9g9UjL2Y2r29jM1RrmXTUYoKTgomsqqjAYyLVNcf0wBJ48dPfL6xl2epUc8Hot7FxWZldsl55CZZ9vw1whRIyGgN/9MKgCCnw=="
+            secretAccessKey: "5vBbETNaHH/NRgQxojjbcdeNn3NaReOvYVh/MLXt",
+            sessionToken: "FwoGZXIvYXdzEEkaDIGlP7k67Ez7C+RZmCK+AcnDi+hW1uVSIkuqQsOeSOPfypNRWi2kT1kVnXTl1g6v511wgWXAUcLomiaKQEb3DNQvDZBNGcNrwcF3Zb4mV7uYZZayLkP4pFyoAZ/dM8qeB+X3kdQ04VGGMVH3VFKi2LG3/KFeyP4lsTp+AKgtTHYOJ1DioNSNtXYsz5bbK9yP6sdxQ3e0yQPNmB56z7Ad1EAlGGEbdj7ejQwqLfPJJ1p4ajd6Z5/OlQbiPUMMN3JysCNoYaDFAY7PJPmJdAkoxJCsjAYyLZF2TUllIe+/t7vX7/VuUK/+VupD+CD+FW60yelt/1qm0txhTFSkNJMRXT579w=="
         });
 
         var docClient = new AWS.DynamoDB.DocumentClient();
@@ -105,15 +106,16 @@
                 }
                 else {
                     document.getElementById('datacheck').innerHTML = "GetItem succeeded: " + "\n" + JSON.stringify(data, undefined, 2);
-                    alert("No credit left for you");
+
                 }
             });
         }
     </script>
-    <script src="https://ajax.google.com/ajax/libs/jquery/3.1.0/jquery.min.js">
+    <script src="https://ajax.google.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js">
     </script>
     <script type="text/javascript">
-        var API_URL ='https://r27tts8ehl.execute-api.us-east-1.amazonaws.com/default/final-testing'
+        var API_URL ='https://r27tts8ehl.execute-api.us-east-1.amazonaws.com/default'
         function send_api() {
             $.ajax({
                 type: 'POST',
