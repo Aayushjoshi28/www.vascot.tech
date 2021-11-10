@@ -285,8 +285,7 @@
         $(document).ready(function() {
 
             $('#reloader').click(function(){
-                alert('ok');
-                $('#content').load('#content');
+                alert('Reload the results of the vulnerability test');
             });
         });
     </script>
@@ -297,7 +296,7 @@
                 <div class="col-lg-12">
                     <div class="section-tittle text-center">
                         <h2>Generated Report</h2>
-                        <button class="btn head-btn3" style="float: right; margin-right: 5px ; margin-bottom: 30px;  background-color: green" >Reload</button>
+                        <button class="btn head-btn3" id="reloader" style="float: right; margin-right: 5px ; margin-bottom: 30px;  background-color: green" >Reload</button>
                     </div>
                 </div>
             </div>
