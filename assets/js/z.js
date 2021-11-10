@@ -45,16 +45,16 @@ function pscan() {
 function score() {
     factor = 0
     factor = 3-(op1+op2+op3)
-    if (factor == 0){
+    if (factor==0){
         outof = 300
     }
-    if (factor == 1) {
+    if (factor==1) {
         outof = 200;
     }
-    if (factor == 2) {
+    if (factor==2) {
         outof = 100;
     }
-    if (factor == 3) {
+    if (factor==3) {
         outof = 10;
     }
     sum = sqlivalue + xssvalue + portvalue;
